@@ -49,14 +49,14 @@ public class RaceSimulator {
 			for(drivers = 0; drivers < Drivers.driver.length; drivers++) {
 				if(Drivers.driver[drivers].getRacedayFinish() == currentRace[i]) {
 					Drivers.driver[drivers].setTotalPoints(Drivers.driver[drivers].getTotalPoints() + Integer.parseInt(Config.getConfig(String.valueOf(i+1))));
-					if(i == 1) {
+					if(i == 0) {
 						Drivers.driver[drivers].setWins(Drivers.driver[drivers].getWins() + 1);
 						Drivers.driver[drivers].setPodiums(Drivers.driver[drivers].getPodiums() + 1);
 						Drivers.driver[drivers].setPointsFinishes(Drivers.driver[drivers].getPointsFinishes() + 1);
-					} else if (i == 2 || i == 3) {
+					} else if (i == 1 || i == 2) {
 						Drivers.driver[drivers].setPodiums(Drivers.driver[drivers].getPodiums() + 1);
 						Drivers.driver[drivers].setPointsFinishes(Drivers.driver[drivers].getPointsFinishes() + 1);
-					} else if (i <= 10) {
+					} else if (i <= 9) {
 						Drivers.driver[drivers].setPointsFinishes(Drivers.driver[drivers].getPointsFinishes() + 1);
 					}
 					System.out.println("Driver: " + Drivers.driver[i].getName() + " - " + Drivers.driver[i].getTotalPoints() + " (" + Drivers.driver[i].getRacedayFinish() + " - " + Drivers.driver[i].getRacedayLuck() + ") " + Drivers.driver[i].getOverall());
@@ -65,15 +65,15 @@ public class RaceSimulator {
 		}
 	}
 	
-	public static void totalWins() {
+	public static void totalStats() { 
 		System.out.println("\n");
-		System.out.println("Driver: " + "	" + "Race Wins:" + " Overall:" + " Podiums:" + " Top 10:");
+		System.out.println("Driver: " + "	" + "Race Wins:" + " Overall:" + " Podiums:" + " Top 10:" + " Points:");
 		for(drivers = 0; drivers < Drivers.driver.length; drivers++) {
 			if(Drivers.driver[drivers].getName().length() < 16) {
-				System.out.println(Drivers.driver[drivers].getName() + "		" + Drivers.driver[drivers].getWins() + "	" + Drivers.driver[drivers].getOverall() + "	" + Drivers.driver[drivers].getPodiums() + "	" + Drivers.driver[drivers].getPointsFinishes());
+				System.out.println(Drivers.driver[drivers].getName() + "		" + Drivers.driver[drivers].getWins() + "	" + Drivers.driver[drivers].getOverall() + "	" + Drivers.driver[drivers].getPodiums() + "	" + Drivers.driver[drivers].getPointsFinishes() + "	" + Drivers.driver[drivers].getTotalPoints());
 
 			} else {
-				System.out.println(Drivers.driver[drivers].getName() + "	" + Drivers.driver[drivers].getWins() + "	" + Drivers.driver[drivers].getOverall() + "	" + Drivers.driver[drivers].getPodiums() + "	" + Drivers.driver[drivers].getPointsFinishes());
+				System.out.println(Drivers.driver[drivers].getName() + "	" + Drivers.driver[drivers].getWins() + "	" + Drivers.driver[drivers].getOverall() + "	" + Drivers.driver[drivers].getPodiums() + "	" + Drivers.driver[drivers].getPointsFinishes() + "	" + Drivers.driver[drivers].getTotalPoints());
 			}
 		}
 	}

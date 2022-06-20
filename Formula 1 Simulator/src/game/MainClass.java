@@ -25,6 +25,7 @@ public class MainClass {
 			System.out.println("\nRace: " + i+1);
 			RaceSimulator.SimulateNextRace();
 		}
-		RaceSimulator.totalWins();
+		
+		RaceSimulator.totalStats();
 	}
 }
