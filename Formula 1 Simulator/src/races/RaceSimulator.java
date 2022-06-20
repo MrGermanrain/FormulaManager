@@ -11,6 +11,7 @@ public class RaceSimulator {
 	public static double currentRace[] = new double[Drivers.driver.length]; 
 	public static double racedayLuck;
 	public static int racedayCrash;
+	public static int raceCounter;
 
 	
 	public static void SimulateNextRace() {
@@ -25,7 +26,6 @@ public class RaceSimulator {
 			//setting up Crashed instances:
 			racedayCrash = (int) Math.random() * 15 + 1;
 			
-			
 			Drivers.driver[i].setRacedayLuck(racedayLuck);
 			raceFinishUnsorted = racedayLuck + Drivers.driver[i].getOverall();
 			Drivers.driver[i].setRacedayFinish(raceFinishUnsorted);
@@ -34,6 +34,9 @@ public class RaceSimulator {
 		
 		Arrays.sort(currentRace);
 		reverseArray(currentRace, currentRace.length);
+		
+		raceCounter++;
+		GameFrame.editRaceCount(raceCounter);
 		
 		addPoints();
 	}
