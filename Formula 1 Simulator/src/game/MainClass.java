@@ -22,7 +22,8 @@ public class MainClass {
 				+  "Game Setup Complete...");
 		
 		for(int i = 0; i < 23; i++) {
-			RaceSimulator.SimulateNextRace();			
+			System.out.println("\nRace: " + i);
+			RaceSimulator.SimulateNextRace();
 		}
 		RaceSimulator.TotalWins();
 	}

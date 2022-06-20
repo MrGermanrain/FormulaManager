@@ -8,17 +8,20 @@ import racers.CreateDrivers;
 public class RaceSimulator {
 	
 	public static double currentRace[] = new double[CreateDrivers.drivers.length]; 
+	public static double racedayLuck;
+
 	
 	public static void SimulateNextRace() {
 		
 		System.out.println("\nThe next race is Beginning!!\n");
 		
-		double racedayLuck;
 		double raceFinishUnsorted;
 		
 		for(int i = 0; i < CreateDrivers.drivers.length; i++) {
 			racedayLuck = Math.random() * 15 + 1;
 			
+			
+			CreateDrivers.drivers[i].setRacedayLuck(racedayLuck);
 			raceFinishUnsorted = racedayLuck + CreateDrivers.drivers[i].getOverall();
 			CreateDrivers.drivers[i].setRacedayFinish(raceFinishUnsorted);
 			currentRace[i] = raceFinishUnsorted;
@@ -39,8 +42,15 @@ public class RaceSimulator {
 					CreateDrivers.drivers[drivers].setTotalPoints(CreateDrivers.drivers[drivers].getTotalPoints() + Integer.parseInt(Config.getConfig(String.valueOf(i+1))));
 					if(i == 1) {
 						CreateDrivers.drivers[drivers].setWins(CreateDrivers.drivers[drivers].getWins() + 1);
+						CreateDrivers.drivers[drivers].setPodiums(CreateDrivers.drivers[drivers].getPodiums() + 1);
+						CreateDrivers.drivers[drivers].setPointsFinishes(CreateDrivers.drivers[drivers].getPointsFinishes() + 1);
+					} else if (i == 2 || i == 3) {
+						CreateDrivers.drivers[drivers].setPodiums(CreateDrivers.drivers[drivers].getPodiums() + 1);
+						CreateDrivers.drivers[drivers].setPointsFinishes(CreateDrivers.drivers[drivers].getPointsFinishes() + 1);
+					} else if (i <= 10) {
+						CreateDrivers.drivers[drivers].setPointsFinishes(CreateDrivers.drivers[drivers].getPointsFinishes() + 1);
 					}
-					System.out.println("Driver: " + CreateDrivers.drivers[i].getName() + " - " + CreateDrivers.drivers[i].getTotalPoints() + " (" + currentRace[i] + ") " + CreateDrivers.drivers[i].getOverall());
+					System.out.println("Driver: " + CreateDrivers.drivers[i].getName() + " - " + CreateDrivers.drivers[i].getTotalPoints() + " (" + CreateDrivers.drivers[i].getRacedayFinish() + " - " + CreateDrivers.drivers[i].getRacedayLuck() + ") " + CreateDrivers.drivers[i].getOverall());
 				}
 			}
 		}
@@ -48,8 +58,14 @@ public class RaceSimulator {
 	
 	public static void TotalWins() {
 		System.out.println("\n");
+		System.out.println("Driver: " + "	" + "Race Wins:" + " Overall:" + " Podiums:" + " Top 10:");
 		for(drivers = 0; drivers < CreateDrivers.drivers.length; drivers++) {
-			System.out.println("Driver: " + CreateDrivers.drivers[drivers].getName() + " " + CreateDrivers.drivers[drivers].getWins() + " " + CreateDrivers.drivers[drivers].getOverall());
+			if(CreateDrivers.drivers[drivers].getName().length() < 16) {
+				System.out.println(CreateDrivers.drivers[drivers].getName() + "		" + CreateDrivers.drivers[drivers].getWins() + "	" + CreateDrivers.drivers[drivers].getOverall() + "	" + CreateDrivers.drivers[drivers].getPodiums() + "	" + CreateDrivers.drivers[drivers].getPointsFinishes());
+
+			} else {
+				System.out.println(CreateDrivers.drivers[drivers].getName() + "	" + CreateDrivers.drivers[drivers].getWins() + "	" + CreateDrivers.drivers[drivers].getOverall() + "	" + CreateDrivers.drivers[drivers].getPodiums() + "	" + CreateDrivers.drivers[drivers].getPointsFinishes());
+			}
 		}
 	}
 	

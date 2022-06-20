@@ -29,11 +29,40 @@ public class Driver {
 
 	// RaceDay Stuff
 	double racedayFinish;
+	double racedayLuck;
 
 	// Driver Game State
 	int totalPoints;
 	int wins;
+	int podiums;
+	int pointsFinishes;
+	
+	
 
+	public int getPointsFinishes() {
+		return pointsFinishes;
+	}
+
+	public void setPointsFinishes(int pointsFinishes) {
+		this.pointsFinishes = pointsFinishes;
+	}
+
+	public int getPodiums() {
+		return podiums;
+	}
+
+	public void setPodiums(int podiums) {
+		this.podiums = podiums;
+	}
+
+	public double getRacedayLuck() {
+		return racedayLuck;
+	}
+
+	public void setRacedayLuck(double racedayLuck) {
+		this.racedayLuck = racedayLuck;
+	}
+	
 	public int getWins() {
 		return wins;
 	}
