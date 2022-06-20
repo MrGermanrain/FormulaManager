@@ -3,6 +3,7 @@ package races;
 import java.util.Arrays;
 
 import configutations.Config;
+import frames.GameFrame;
 import racers.Drivers;
 
 public class RaceSimulator {
@@ -69,6 +70,8 @@ public class RaceSimulator {
 		System.out.println("\n");
 		System.out.println("Driver: " + "	" + "Race Wins:" + " Overall:" + " Podiums:" + " Top 10:" + " Points:");
 		for(drivers = 0; drivers < Drivers.driver.length; drivers++) {
+			GameFrame.editTableRow(drivers,Drivers.driver[drivers].getName(), Drivers.driver[drivers].getWins(), Drivers.driver[drivers].getOverall(), Drivers.driver[drivers].getPodiums(), Drivers.driver[drivers].getPointsFinishes(), Drivers.driver[drivers].getTotalPoints());
+
 			if(Drivers.driver[drivers].getName().length() < 16) {
 				System.out.println(Drivers.driver[drivers].getName() + "		" + Drivers.driver[drivers].getWins() + "	" + Drivers.driver[drivers].getOverall() + "	" + Drivers.driver[drivers].getPodiums() + "	" + Drivers.driver[drivers].getPointsFinishes() + "	" + Drivers.driver[drivers].getTotalPoints());
 

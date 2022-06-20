@@ -5,6 +5,8 @@ import racers.Drivers;
 import races.RaceSimulator;
 
 public class MainClass {
+	
+	/*
 	public static void main(String[] args) {
 		CreateCars.createCars();
 		Drivers.createDrivers();
@@ -26,6 +28,17 @@ public class MainClass {
 			RaceSimulator.SimulateNextRace();
 		}
 		
+		RaceSimulator.totalStats();
+	}
+	*/
+	
+	public static void gameSetup() {
+		CreateCars.createCars();
+		Drivers.createDrivers();
+	}
+
+	public static void nextRace() {
+		RaceSimulator.SimulateNextRace();
 		RaceSimulator.totalStats();
 	}
 }
