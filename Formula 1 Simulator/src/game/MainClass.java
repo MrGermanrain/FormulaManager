@@ -1,20 +1,20 @@
 package game;
 
 import cars.CreateCars;
-import racers.CreateDrivers;
+import racers.Drivers;
 import races.RaceSimulator;
 
 public class MainClass {
 	public static void main(String[] args) {
 		CreateCars.createCars();
-		CreateDrivers.createDrivers();
+		Drivers.createDrivers();
 		
-		for(int i = 0; i < CreateDrivers.drivers.length; i++) {
-			System.out.println("Racer Name: " + CreateDrivers.drivers[i].getName());
-			System.out.println("Racer Rating: " +  CreateDrivers.drivers[i].getRating());
-			System.out.println("Car: " + CreateDrivers.drivers[i].getCar().getName());
-			System.out.println("Car Rating: " + CreateDrivers.drivers[i].getCar().getRating());
-			System.out.println("Overall: " + CreateDrivers.drivers[i].getOverall());
+		for(int i = 0; i < Drivers.driver.length; i++) {
+			System.out.println("Racer Name: " + Drivers.driver[i].getName());
+			System.out.println("Racer Rating: " +  Drivers.driver[i].getRating());
+			System.out.println("Car: " + Drivers.driver[i].getCar().getName());
+			System.out.println("Car Rating: " + Drivers.driver[i].getCar().getRating());
+			System.out.println("Overall: " + Drivers.driver[i].getOverall());
 			System.out.println("---------------");
 		} 
 		
@@ -22,9 +22,9 @@ public class MainClass {
 				+  "Game Setup Complete...");
 		
 		for(int i = 0; i < 23; i++) {
-			System.out.println("\nRace: " + i);
+			System.out.println("\nRace: " + i+1);
 			RaceSimulator.SimulateNextRace();
 		}
-		RaceSimulator.TotalWins();
+		RaceSimulator.totalWins();
 	}
 }

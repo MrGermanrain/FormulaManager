@@ -36,8 +36,7 @@ public class Driver {
 	int wins;
 	int podiums;
 	int pointsFinishes;
-	
-	
+	int totalCrashes;
 
 	public int getPointsFinishes() {
 		return pointsFinishes;
